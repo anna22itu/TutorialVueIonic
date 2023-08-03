@@ -14,7 +14,7 @@
       </ion-header>
 
       <div id="container">
-        <strong>Welcome to my Ionic Tutorial</strong>
+        <strong>Welcome to my Tab3</strong>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
       </div>
     </ion-content>
@@ -25,7 +25,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
 export  default defineComponent({
-  name: 'HomePage',
+  name: 'Tab3Page',
   components:{
     IonContent,IonHeader,IonPage,IonTitle,IonToolbar
   }
