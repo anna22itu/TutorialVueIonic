@@ -3,7 +3,8 @@ import { IonicVue } from '@ionic/vue';
 import App from './App.vue'; 
 import router from './router';
 
-
+// https://ionic.io/ionicons
+  
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 

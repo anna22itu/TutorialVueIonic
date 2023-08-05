@@ -2,32 +2,49 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Blank</ion-title>
+        <ion-title class="ion-text-center">Calculator</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content :fullscreen="true">
+
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Blank</ion-title>
         </ion-toolbar>
       </ion-header>
 
-      <div id="container">
-        <strong>Welcome to my Ionic Tutorial</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+      <ion-button @click = "isNumberEven" >Place a number</ion-button>
+      <ion-input v-model="number"></ion-input>
+      <ion-button v-if = "even" v-model = "number">Congrats this number is even!</ion-button>
+      <ion-button v-if = "!even" v-model = "number">Ops your number is odd!</ion-button>
+      
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton,IonInput } from '@ionic/vue';
+import { defineComponent, ref } from 'vue';
 export  default defineComponent({
   name: 'HomePage',
-  components:{
-    IonContent,IonHeader,IonPage,IonTitle,IonToolbar
+  components:{  
+    IonContent,IonHeader,IonPage,IonTitle,IonToolbar, IonButton, IonInput
+  },
+  setup(){
+    let number = ref(0)
+    let even = ref(false)
+    function isNumberEven(){
+      if (number.value % 2 == 0) {
+        even.value = true;
+      }
+      else{
+        even.value = false;
+      }
+    }
+    return{
+      number, isNumberEven, even
+    }
   }
 });
 </script>

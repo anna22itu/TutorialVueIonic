@@ -5,7 +5,7 @@
         <ion-tab-bar>  
     
             <ion-tab-button tab="HomePage" href='/home'>
-            <ion-icon :icon="airplaneOutline" />
+                <ion-icon :icon="calculatorOutline" />
             <ion-label>Home Page</ion-label>
             </ion-tab-button>
             
@@ -27,7 +27,7 @@
   <script lang="ts">
   import { defineComponent } from 'vue';
   import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-  import { airplaneOutline, cameraOutline, exitOutline, sunny } from 'ionicons/icons';
+  import { airplaneOutline, cameraOutline, exitOutline, sunny, calculatorOutline} from 'ionicons/icons';
   
   export default defineComponent({
     name: 'TabsPage',
@@ -37,7 +37,8 @@
         cameraOutline, 
         sunny, 
         airplaneOutline,
-        exitOutline
+        exitOutline,
+        calculatorOutline
       }
     }
   });

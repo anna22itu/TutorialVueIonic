@@ -9,23 +9,25 @@ import TabsPage from '../views/TabsPage.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: TabsPage
+    component: TabsPage,
+    children: [
+      {
+        path: '/home',
+        name: 'Home',
+        component: HomePage,
+      },
+      {
+        path: '/tab2',
+        name: 'Tab2',
+        component: Tab2Page
+      },
+      {
+        path: '/tab3',
+        name: 'Tab3',
+        component: Tab3Page
+      }
+    ]
   },
-  {
-    path: '/home',
-    name: 'Home',
-    component: HomePage 
-  },
-  {
-    path: '/tab2',
-    name: 'Tab2',
-    component: Tab2Page
-  },
-  {
-    path: '/tab3',
-    name: 'Tab3',
-    component: Tab3Page
-  }
 ]
 
 const router = createRouter({
