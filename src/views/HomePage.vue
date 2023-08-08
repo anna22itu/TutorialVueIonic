@@ -25,15 +25,30 @@
 
 <script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton,IonInput } from '@ionic/vue';
-import { defineComponent, ref } from 'vue';
+import { useMQTT } from 'mqtt-vue-hook';
+import { defineComponent, ref, onMounted } from 'vue';
+
 export  default defineComponent({
   name: 'HomePage',
   components:{  
     IonContent,IonHeader,IonPage,IonTitle,IonToolbar, IonButton, IonInput
   },
   setup(){
+    const mqttHook = useMQTT()
+    onMounted(() =>{
+      mqttHook.publish("IonicTutorial/gate/connectPlatform","")
+      mqttHook.registerEvent(
+          'on-connect', // mqtt status: on-connect, on-reconnect, on-disconnect, on-connect-fail
+          (topic: string, message: string) => {
+              console.log('mqtt connected')
+          },
+          'string_key',
+      )
+    })
+    
     let number = ref(0)
     let even = ref(false)
+
     function isNumberEven(){
       if (number.value % 2 == 0) {
         even.value = true;
