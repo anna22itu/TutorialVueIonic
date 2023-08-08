@@ -37,13 +37,6 @@ export  default defineComponent({
     const mqttHook = useMQTT()
     onMounted(() =>{
       mqttHook.publish("IonicTutorial/gate/connectPlatform","")
-      mqttHook.registerEvent(
-          'on-connect', // mqtt status: on-connect, on-reconnect, on-disconnect, on-connect-fail
-          (topic: string, message: string) => {
-              console.log('mqtt connected')
-          },
-          'string_key',
-      )
     })
     
     let number = ref(0)

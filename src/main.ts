@@ -35,22 +35,19 @@ const app = createApp(App)
    
 
 app.provide('emitter', emitter);
-/*
-app.use(mqttVueHook,'mqtt://localhost:8083',{
-  clean:false,
-  keepalive: 60,
-  clientId:'IonicTutorial',
-  connectTimeout:4000,
 
-})*/
-import { useMQTT } from 'mqtt-vue-hook'
-const mqttHook = useMQTT()
 
-mqttHook.connect('mqtt://localhost:8083', {
-    clean: false,
-    keepalive: 60,
-    clientId: 'IonicTutorial',
-    connectTimeout: 4000,
+app.use(mqttVueHook, 'ws://classpip.upc.edu:8000/mqtt', {
+// //app.use(mqttVueHook, 'mqtt://localhost:8083', {
+// //app.use(mqttVueHook, 'mqtt://192.168.1.46:8000', {
+// app.use(mqttVueHook, 'mqtt://192.168.137.1:8000', {
+   clean: true,
+   keepalive: 60,
+   //clientId: 'MobileAppDEE',
+   clientId: undefined,
+   connectTimeout: 4000, 
+   username: 'dronsEETAC',
+   password: 'mimara1456.'
 })
 
 router.isReady().then(() => {
