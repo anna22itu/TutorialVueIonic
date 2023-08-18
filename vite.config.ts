@@ -5,17 +5,18 @@ import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    legacy()
-  ],
+  plugins: [vue(),legacy()],
+  define: {
+    Module: {} // this
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
-  test: {
+  /*test: {
     globals: true,
     environment: 'jsdom'
-  }
+  },*/
+  
 })
