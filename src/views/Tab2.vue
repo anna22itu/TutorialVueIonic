@@ -43,7 +43,6 @@
 <script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonRow, IonCol, IonItem, IonSelect, IonSelectOption, IonList } from '@ionic/vue';
 import { defineComponent, ref, onMounted } from 'vue';
-//import cv from 'opencv.js';
 import cv from 'opencv.js';
 import { useMQTT } from 'mqtt-vue-hook';
 
@@ -57,10 +56,12 @@ export  default defineComponent({
     let mode = ref("Normal"); 
     onMounted(() => {
       // tenemos que registrar eventos en especifico
-      mqttHook.registerEvent('"cameraService/IonicTutorial/videoFrame"', (topic, message) => {
+      mqttHook.registerEvent('cameraService/IonicTutorial/videoFrame', (topic, message) => {
         
+        console.log ('recibo frame')
+
         const img = new Image();
-        img.src = "data:image/jpg;base64,"+message.toString;
+        img.src = "data:image/jpg;base64,"+message;
 
         let dst = new cv.Mat();
         let source = cv.imread(img);
@@ -111,11 +112,11 @@ export  default defineComponent({
       })
     })
     function startVideoStream(){
-      mqttHook.subscribe(["cameraService/IonicTutorial/videoFrame"], 0);
-      mqttHook.publish("IonicTutorial/cameraService/startVideoStream", "Start a video stream",1);
+      mqttHook.subscribe(["cameraService/IonicTutorial/videoFrame"], 1);
+      mqttHook.publish("IonicTutorial/cameraService/startVideoStream", "",1);
     }
     function stopVideoStream(){
-      mqttHook.publish("IonicTutorial/cameraService/stopVideoStream", "Stop a video stream",1)
+      mqttHook.publish("IonicTutorial/cameraService/stopVideoStream", "",1)
     }
 
     return {
