@@ -15,7 +15,7 @@
           </ion-tab-button>
           
           <ion-tab-button tab="Tab3" href='/tab3'>
-            <ion-icon :icon="sunny" />
+            <ion-icon :icon="callOutline" />
             <ion-label>Tab 3</ion-label>
           </ion-tab-button>
   
@@ -27,7 +27,7 @@
   <script lang="ts">
   import { defineComponent } from 'vue';
   import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-  import { airplaneOutline, cameraOutline, exitOutline, sunny, calculatorOutline} from 'ionicons/icons';
+  import { airplaneOutline, cameraOutline, exitOutline, sunny, calculatorOutline, callOutline} from 'ionicons/icons';
   
   export default defineComponent({
     name: 'TabsPage',
@@ -35,7 +35,7 @@
     setup() {
       return {
         cameraOutline, 
-        sunny, 
+        callOutline, 
         airplaneOutline,
         exitOutline,
         calculatorOutline
